@@ -33,6 +33,7 @@ curl -X POST http://localhost:7777/calcs/fib -H 'Content-Type: application/json'
 3. Faça log da URL de todas as requisições que chegam ao servidor automaticamente
 4. Implemente rotas de CRUD de uma entidade livro, com os atributos `{id, nome}`. A persistência pode ser em memória, mas usar MongoDB, é um bônus.
 5. Atualize a seção [resultados](#resultados) com instruções de como testar o passo 4
+6. Bônus: use docker
 
 ## Resultados
 
