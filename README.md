@@ -12,6 +12,10 @@ yarn # instalar dependências
 yarn start # iniciar servidor
 ```
 
+## Instruções
+
+Faça um fork do repositório e abra um pull request com seu desafio.
+
 ## Objetivos do desafio
 
 Você é livre pra instalar quaiquer libs que quiser.
