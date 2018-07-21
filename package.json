@@ -1,0 +1,21 @@
+{
+  "name": "desafio-node",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon .",
+    "lint": "eslint . && echo '✔  Your .js files look good.'"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "nodemon": "^1.18.3"
+  }
+}
