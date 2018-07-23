@@ -1,6 +1,9 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const calcsRouter = require('./routes/calcs');
+//const crudRouter = require('./routes/crud');
+const morgan = require('morgan'); // Morgan para gerar o log
+//global.db = require('./db');
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -9,6 +12,7 @@ const app = express();
 // ----- Middlewares -----
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(morgan(':method :url :response-time')); //intercepta as requisições
 // ----- Middlewares -----
 
 
@@ -18,6 +22,7 @@ app.get('/hello', (req, res) => {
 });
 
 app.use('/calcs', calcsRouter);
+//app.use('/crud', crudRouter);
 // ----- Routes -----
 
 
