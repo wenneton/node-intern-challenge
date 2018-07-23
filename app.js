@@ -1,9 +1,10 @@
+global.db = require('./db');
+
 const bodyParser = require('body-parser');
 const express = require('express');
 const calcsRouter = require('./routes/calcs');
-//const crudRouter = require('./routes/crud');
+const crudRouter = require('./routes/crud');
 const morgan = require('morgan'); // Morgan para gerar o log
-//global.db = require('./db');
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -22,7 +23,7 @@ app.get('/hello', (req, res) => {
 });
 
 app.use('/calcs', calcsRouter);
-//app.use('/crud', crudRouter);
+app.use('/crud', crudRouter);
 // ----- Routes -----
 
 
