@@ -24,11 +24,23 @@ router.post('/update/:id', function(req, res) {
   var nome = req.body.nome;
   global.db.update(id, {nome}, (e, result) => {
         if(e) { 
-        	res.json({message: "erro"});
+        	res.json({message: id});
         	return console.log(e); 
         }
         res.json({message: "registro alterado"});
     });
+});
+
+router.get('/delete/:id', function(req, res) {
+  var id = parseInt(req.params.id);
+  global.db.deleteOne(id, (e, r) => {
+        if(e) { return console.log(e); }
+        if(1){ 
+        	res.status(200).send({message: r});
+        }else{
+        	res.status(200).send({message: "Registro inexistente"});
+        }
+      });
 });
 
 module.exports = router;

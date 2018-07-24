@@ -14,7 +14,11 @@ function insert(livro, callback){
 }
 
 function update(id, livro, callback){
-    global.conn.collection("livro").updateOne({"id":id}, livro, callback);
+    global.conn.collection("livro").updateOne({"_id":id}, {$set: livro}, callback);
 }
 
-module.exports = { findAll, insert, update }
+function deleteOne(id, callback){
+    global.conn.collection("livro").deleteOne({"_id": id}, callback);
+}
+
+module.exports = { findAll, insert, update, deleteOne }
