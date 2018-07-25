@@ -37,4 +37,41 @@ curl -X POST http://localhost:7777/calcs/fib -H 'Content-Type: application/json'
 
 ## Resultados
 
+### Passos para teste do CRUD
 
+Primeiramente devemos executar a seguinte chamada no terminal para ativar o servidor mongoDB:
+
+```bash
+mongod --dbpath path/node-intern-challenge/data/
+```
+
+onde ```path``` é o caminho onde se encontra o repositório.
+
+#### Create
+
+Após o primeiro passo, seguimos para a parte de inserção no banco de dados, um exemplo pode ser visto nas seguintes instruções:
+
+```bash
+curl -X POST http://localhost:7777/crud/create -H 'Content-Type: application/json' -d '{"_id": 7, "nome": "Algoritmo e Estrutura de Dados"}'
+curl -X POST http://localhost:7777/crud/create -H 'Content-Type: application/json' -d '{"_id": 5, "nome": "Redes de Computadores"}'
+```
+
+#### Read
+
+Para verificar se os registros realmente encontram-se no banco de dados, abrimos o seguinte link no navegador: http://localhost:7777/crud/read, onde podemos ver uma mensagem desse estilo:
+
+```{"message":"Registros encontrados","docs":[{"_id":7,"nome":"Algoritmos e estruturas de dados"},{"_id":5,"nome":"Redes de Computadores"}]}```
+
+#### Update
+
+Chamada para update:
+
+```bash
+curl -X POST http://localhost:7777/crud/update/5 -H 'Content-Type: application/json' -d '{"nome": "Redes de Computadores: Uma abordagem top-down"}'
+```
+
+onde o ```7``` após ```...update/``` refere-se ao id do registro que deseja-se alterar.
+
+#### Delete
+
+Simplesmente inserimos o endereço http://localhost:7777/crud/delete/4 no navegador. Mais uma vez o número após ao ```...delete/``` refere-se ao id que desejamos deletar.
