@@ -22,12 +22,16 @@ router.post('/create', function(req, res) {
 router.post('/update/:id', function(req, res) {
   var id = parseInt(req.params.id);
   var nome = req.body.nome;
-  global.db.update(id, {nome}, (e, result) => {
+  global.db.update(id, {nome}, (e, r) => {
         if(e) { 
         	res.json({message: id});
         	return console.log(e); 
         }
-        res.json({message: "registro alterado"});
+        if(r.result.nModified){
+        	res.status(200).send({message: "registro alterado"});
+        }else{
+        	res.status(200).send({message: "registro inalterado ou inexistente"});
+        }
     });
 });
 
@@ -35,11 +39,7 @@ router.get('/delete/:id', function(req, res) {
   var id = parseInt(req.params.id);
   global.db.deleteOne(id, (e, r) => {
         if(e) { return console.log(e); }
-        if(1){ 
-        	res.status(200).send({message: r});
-        }else{
-        	res.status(200).send({message: "Registro inexistente"});
-        }
+        res.status(200).send({message: "registro deletado"});
       });
 });
 
